@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Fragrance Gazette</title>
+<style>
+:root{--bg:#f7f3ea;--ink:#201c16;--mut:#6e6558;--line:#c9bfa9;--rule:#201c16;--acc:#7a2e2e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Iowan Old Style",Georgia,serif}
+.sans{font-family:ui-sans-serif,-apple-system,"Segoe UI",sans-serif}
+.w{max-width:920px;margin:0 auto;padding:22px 16px 70px}
+.masthead{text-align:center;border-top:3px double var(--rule);border-bottom:3px double var(--rule);padding:16px 0 12px}
+.masthead .k{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut)}
+.masthead h1{font-size:clamp(34px,8vw,56px);margin:6px 0 4px;font-weight:400}
+.masthead .ed{font-size:12px;color:var(--mut);letter-spacing:.08em;text-transform:uppercase;
+ display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:8px;margin-top:8px}
+h2{font-size:14px;text-transform:uppercase;letter-spacing:.16em;text-align:center;margin:38px 0 14px;position:relative}
+h2 span{background:var(--bg);padding:0 14px;position:relative;z-index:1}
+h2::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:1px solid var(--rule)}
+.item{border-bottom:1px solid var(--line);padding:10px 0}
+.item h3{font-size:17px;margin:0 0 4px;font-weight:600}
+.meta{font-size:10.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+a{color:var(--acc)}
+.warn{border:1px dashed var(--line);padding:12px 14px;font-size:13px;color:var(--mut)}
+.archive h4{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);
+ border-bottom:1px solid var(--rule);padding-bottom:4px;margin:22px 0 6px}
+.archive ul{margin:0 0 4px;padding-left:0;list-style:none}
+.archive li{font-size:14px;padding:4px 0;border-bottom:1px dotted var(--line)}
+.archive li .src{font-size:11px;color:var(--mut);font-family:ui-sans-serif,sans-serif}
+footer{margin-top:44px;padding-top:14px;border-top:3px double var(--rule);font-size:12.5px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="w">
+<div class="masthead">
+  <div class="k">Auto-generated — see footer</div>
+  <h1>The Fragrance Gazette</h1>
+  <div class="ed"><span>Edition of {{DATE}}</span><span>Built by scheduled pipeline</span></div>
+</div>
+
+<h2><span>This Week — from live feeds</span></h2>
+{{WEEK_ITEMS}}
+
+<h2><span>This Month — from live feeds</span></h2>
+{{MONTH_ITEMS}}
+
+{{STATIC}}
+
+<section class="archive">
+<h2><span>Fragrance Recent Launches — 2026 Archive</span></h2>
+<div class="warn">Grows automatically as feed items are pulled in. Still not exhaustive — see README.</div>
+{{ARCHIVE}}
+</section>
+
+<footer>
+Sections above the archive are pulled live from RSS feeds each run (see <code>fetch_and_build.py</code>).
+Sections between "This Month" and the archive (buzz ranking, pop-ups, exhibitions, innovation, trends)
+are hand-maintained in <code>data/manual.json</code> — nothing tracks those automatically yet.
+Last built: {{DATE}}.
+</footer>
+</div>
+</body>
+</html>
